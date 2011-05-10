@@ -9,8 +9,9 @@ Author: WPBeginner
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Requires at least: 3.0 
 Tested up to: 3.1.2
-Stable tag: 0.1
-Version: 0.1
+Stable tag: 0.1.1
+
+Add Facebook Meta Data in WordPress to avoid no thumbnail issue, wrong title issue, wrong description issue, etc. 
 
 == Description ==
 
@@ -30,6 +31,11 @@ Facebook Open Graph Meta in WordPress is a simple plugin that adds Facebook Meta
 
 
 == Changelog ==
+
+= 0.1.1 =
+* Fixed Error for theme's that did not support post-thumbnails.
+* First Image in Each Post will now be the new Default Fallback Image 
+* Removed the option of setting default Thumbnail
 
 = 0.1 =
 * Initial release.

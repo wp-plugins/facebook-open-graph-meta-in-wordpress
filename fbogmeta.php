@@ -1,7 +1,7 @@
 <?php 
 /*
 Plugin Name: Facebook Open Graph Meta in WordPress
-Version: 0.1
+Version: 0.1.1
 Plugin URI: http://www.wpbeginner.com/
 Description: Simple plugin that adds Facebook Open Graph Meta information in WordPress themes to avoid no thumbnail issue, wrong title issue, and wrong description issue.
 Author: WPBeginner
@@ -26,6 +26,25 @@ function add_opengraph_doctype( $output ) {
 	}
 add_filter('language_attributes', 'add_opengraph_doctype');
 
+
+
+//function to call first uploaded image in functions file
+function first_image() {
+$files = get_children('post_parent='.get_the_ID().'&post_type=attachment&post_mime_type=image&order=desc');
+  if($files) :
+    $keys = array_reverse(array_keys($files));
+    $j=0;
+    $num = $keys[$j];
+    $image=wp_get_attachment_image($num, 'large', true);
+    $imagepieces = explode('"', $image);
+    $imagepath = $imagepieces[1];
+    $main=wp_get_attachment_url($num);
+        $template=get_template_directory();
+        $the_title=get_the_title();
+    return "$main";
+  endif;
+}
+
 //Lets add Open Graph Meta Info
 
 function insert_fb_in_head() {
@@ -38,12 +57,12 @@ function insert_fb_in_head() {
         echo '<meta property="og:type" content="article"/>';
         echo '<meta property="og:url" content="' . get_permalink() . '"/>';
         echo '<meta property="og:site_name" content="'. $options['site_name'] .'"/>';
-	if(!has_post_thumbnail( $post->ID )) { //the post does not have featured image, use a default image
-		echo '<meta property="og:image" content="'. $options['default_img'] .'"/>';
-	}
-	else{
+	if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) { //the post does have featured image
 		$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
 		echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '"/>';
+	}
+	else{
+		echo '<meta property="og:image" content="' . first_image() . '"/>';
 	}
 	echo "\n";
 }
@@ -98,12 +117,7 @@ Check our main site <a href="http://www.wpbeginner.com">WPBeginner</a> for WordP
         <input type="text" name="fbogmeta[site_name]" value="<?php echo $options['site_name']; ?>" /></td>
         </tr>
         
-        <tr valign="top">
-        <th scope="row">Default Image URL</th>
-        <td>
-        <input type="text" name="fbogmeta[default_img]" value="<?php echo $options['default_img']; ?>" /><br /> Enter the URL for your default image. This will show if your post does not have a thumbnail.</td>
-        </tr>
-        
+         
         
         
     </table>
