@@ -32,7 +32,7 @@ Facebook Open Graph Meta in WordPress is a simple plugin that adds Facebook Meta
 
 == Changelog ==
 
-=0.1.2=
+= 0.1.2 =
 * Added the og:description tag so post descriptions can render properly. This tag will pull from Post Excerpts.
 
 = 0.1.1 =
