@@ -1,7 +1,7 @@
 <?php 
 /*
 Plugin Name: Facebook Open Graph Meta in WordPress
-Version: 0.1.1
+Version: 0.1.2
 Plugin URI: http://www.wpbeginner.com/
 Description: Simple plugin that adds Facebook Open Graph Meta information in WordPress themes to avoid no thumbnail issue, wrong title issue, and wrong description issue.
 Author: WPBeginner
