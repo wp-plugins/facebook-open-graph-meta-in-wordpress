@@ -8,7 +8,7 @@ Author URI: http://www.wpbeginner.com/
 Author: WPBeginner
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Requires at least: 3.0 
-Tested up to: 3.1.2
+Tested up to: 3.1.3
 Stable tag: 0.1.2
 
 Add Facebook Meta Data in WordPress to avoid no thumbnail issue, wrong title issue, wrong description issue, etc. 
@@ -32,7 +32,8 @@ Facebook Open Graph Meta in WordPress is a simple plugin that adds Facebook Meta
 
 == Changelog ==
 
-=0.1.2=
+= 0.1.2 =
+
 * Added the og:description tag so post descriptions can render properly. This tag will pull from Post Excerpts.
 
 = 0.1.1 =
