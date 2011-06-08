@@ -54,6 +54,7 @@ function insert_fb_in_head() {
 		$options = get_option('fbogmeta');
         echo '<meta property="fb:admins" content="'. $options['user_id'] .'"/>';
         echo '<meta property="og:title" content="' . get_the_title() . '"/>';
+		echo '<meta property="og:description" content="' . strip_tags(get_the_excerpt($post->ID)) . '" />';
         echo '<meta property="og:type" content="article"/>';
         echo '<meta property="og:url" content="' . get_permalink() . '"/>';
         echo '<meta property="og:site_name" content="'. $options['site_name'] .'"/>';
