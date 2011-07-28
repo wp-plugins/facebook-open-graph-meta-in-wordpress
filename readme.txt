@@ -8,14 +8,20 @@ Author URI: http://www.wpbeginner.com/
 Author: WPBeginner
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Requires at least: 3.0 
-Tested up to: 3.1.2
-Stable tag: 0.1.2
+Tested up to: 3.1.3
+Stable tag: 0.1.3
 
 Add Facebook Meta Data in WordPress to avoid no thumbnail issue, wrong title issue, wrong description issue, etc. 
 
 == Description ==
 
 Facebook Open Graph Meta in WordPress is a simple plugin that adds Facebook Meta Data in WordPress to avoid no thumbnail issue, wrong title issue, wrong description issue, etc. 
+
+
+[Check out my other plugins](http://wordpress.org/extend/plugins/profile/smub "Check out my other plugins")
+
+[Visit WPBeginner for any tutorials or support](http://www.wpbeginner.com "Visit WPBeginner for any tutorials or support")
+
 
 == Installation ==
 
@@ -32,7 +38,14 @@ Facebook Open Graph Meta in WordPress is a simple plugin that adds Facebook Meta
 
 == Changelog ==
 
+= 0.1.3 =
+
+* Updated the og:description to pull either Yoast's SEO description or Post Excerpts.
+* Added the option to set default thumbnail
+* Open Graph Meta Data now is shown on all pages with appropriate title, and type.
+
 = 0.1.2 =
+
 * Added the og:description tag so post descriptions can render properly. This tag will pull from Post Excerpts.
 
 = 0.1.1 =
