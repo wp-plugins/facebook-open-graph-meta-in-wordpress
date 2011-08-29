@@ -1,7 +1,7 @@
 <?php 
 /*
 Plugin Name: Facebook Open Graph Meta in WordPress
-Version: 0.1.3
+Version: 0.2
 Plugin URI: http://www.wpbeginner.com/
 Description: Simple plugin that adds Facebook Open Graph Meta information in WordPress themes to avoid no thumbnail issue, wrong title issue, and wrong description issue.
 Author: WPBeginner
@@ -34,9 +34,9 @@ His article can be found here - http://yoast.com/facebook-open-graph-protocol/
 */
 
 function get_fbimage() {
+  if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) {
   $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '', '' );
-  if ( has_post_thumbnail($post->ID) ) {
-    $fbimage = $src[0];
+  $fbimage = $src[0];
   } else {
     global $post, $posts;
     $fbimage = '';
@@ -58,11 +58,7 @@ $options = get_option('fbogmeta');
 echo '<meta property="fb:admins" content="'. $options['user_id'] .'"/>'; ?>
         
 <meta property="og:title" content="<?php if(is_home()) { bloginfo('name'); } elseif(is_category()) { echo single_cat_title();} elseif(is_author()) { $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author')); echo $curauth->display_name; } else { echo the_title(); } ?>" />
-<meta property="og:description" content="<?php  if ( function_exists('wpseo_get_value') ) {
-echo wpseo_get_value('metadesc');
-} else {
-echo $post->post_excerpt;
-}?>"/>
+<meta property="og:description" content="<?php echo strip_tags(get_the_excerpt($post->ID)); ?>"/>
 <meta property="og:url" content="<?php the_permalink(); ?>"/>
 <meta property="og:image" content="<?php echo get_fbimage(); ?>"/>
 <meta property="og:type" content="<?php if (is_single() || is_page()) { echo "article"; } else { echo "website";} ?>"/>
